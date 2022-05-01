@@ -1,0 +1,56 @@
+[
+    {
+        "id": 1,
+        "name": "karina",
+        "description": "this is very good product",
+        "price": "$300",
+        "quantity": "12",
+        "supplier": "samsung",
+        "img": "https://img.freepik.com/free-psd/hard-cover-book-mockup_23-2149169378.jpg?t=st=1651341118~exp=1651341718~hmac=8dfaad663b26c0dd31fcf2a8c2a8d29275131dc6762579781abbc6000da127c7&w=826"
+    },
+    {
+        "id": 2,
+        "name": "zarina",
+        "description": "this is very good product",
+        "price": "$300",
+        "quantity": "12",
+        "supplier": "samsung",
+        "img": "https://img.freepik.com/free-psd/hard-cover-book-mockup_23-2149169378.jpg?t=st=1651341118~exp=1651341718~hmac=8dfaad663b26c0dd31fcf2a8c2a8d29275131dc6762579781abbc6000da127c7&w=826"
+    },
+    {
+        "id": 3,
+        "name": "darina",
+        "description": "this is very good product",
+        "price": "$300",
+        "quantity": "12",
+        "supplier": "samsung",
+        "img": "https://img.freepik.com/free-psd/hard-cover-book-mockup_23-2149169378.jpg?t=st=1651341118~exp=1651341718~hmac=8dfaad663b26c0dd31fcf2a8c2a8d29275131dc6762579781abbc6000da127c7&w=826"
+    },
+    {
+        "id": 4,
+        "name": "harina",
+        "description": "this is very good product",
+        "price": "$300",
+        "quantity": "12",
+        "supplier": "samsung",
+        "img": "https://img.freepik.com/free-psd/hard-cover-book-mockup_23-2149169378.jpg?t=st=1651341118~exp=1651341718~hmac=8dfaad663b26c0dd31fcf2a8c2a8d29275131dc6762579781abbc6000da127c7&w=826"
+    },
+    {
+        "id": 5,
+        "name": "karina",
+        "description": "this is very good product",
+        "price": "$300",
+        "quantity": "12",
+        "supplier ": "samsung",
+        "img": "https://img.freepik.com/free-psd/hard-cover-book-mockup_23-2149169378.jpg?t=st=1651341118~exp=1651341718~hmac=8dfaad663b26c0dd31fcf2a8c2a8d29275131dc6762579781abbc6000da127c7&w=826"
+    },
+    {
+        "id": 6,
+        "name": "karina",
+        "description": "this is very good product",
+        "price": "$300",
+        "quantity": "12",
+        "supplier ": "samsung",
+        "img": "https://img.freepik.com/free-psd/hard-cover-book-mockup_23-2149169378.jpg?t=st=1651341118~exp=1651341718~hmac=8dfaad663b26c0dd31fcf2a8c2a8d29275131dc6762579781abbc6000da127c7&w=826"
+    }
+]
