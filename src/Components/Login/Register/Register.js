@@ -1,8 +1,17 @@
 import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import auth from '../../../firebase.init';
 
 const Register = () => {
+
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useCreateUserWithEmailAndPassword(auth);
 
     const emailRef = useRef('');
     const passwordRef = useRef('');
@@ -11,6 +20,10 @@ const Register = () => {
 
     const navigateLogin = event => {
         navigate('/login');
+    };
+
+    if (user) {
+        navigate('/home');
     }
 
     const handleRegister = event => {
@@ -18,6 +31,8 @@ const Register = () => {
 
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
+
+        createUserWithEmailAndPassword(email, password);
 
         console.log(email, password);
     };
