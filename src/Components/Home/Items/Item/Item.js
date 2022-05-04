@@ -3,7 +3,7 @@ import { Button, Card } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import "./Item.css"
 
-const Item = ({ item }) => {
+const Item = ({ item, callFromInventory }) => {
 
     const { id, name, description, quantity, price, supplier, img
     } = item;
@@ -36,10 +36,15 @@ const Item = ({ item }) => {
 
                     </Card.Text>
                     <Button onClick={() => navigateToItemDetail(id)} variant="primary">Update</Button>
+
+                    {callFromInventory  ? (
+                        <Button variant="primary">Delete</Button>
+                    ) : null}
+                    
                 </Card.Body>
             </Card>
         </div>
-        
+
 
     );
 };
