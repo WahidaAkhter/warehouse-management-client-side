@@ -38,8 +38,9 @@ const Item = ({ item }) => {
                     <Button onClick={() => navigateToItemDetail(id)} variant="primary">Update</Button>
                 </Card.Body>
             </Card>
-
         </div>
+        
+
     );
 };
 
