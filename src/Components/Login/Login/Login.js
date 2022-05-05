@@ -1,9 +1,11 @@
 import React, { useRef } from 'react';
-import { Button, Form } from 'react-bootstrap';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { Button, Form, Spinner } from 'react-bootstrap';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import GoogleLogin from '../GoogleLogin/GoogleLogin';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
 
@@ -14,7 +16,7 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
-
+    const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
 
     const emailRef = useRef('');
     const passwordRef = useRef('');
@@ -24,8 +26,21 @@ const Login = () => {
 
     let from = location.state?.pathname || "/";
 
+    let errorElement;
+
+    if (error) {
+        errorElement =
+            <p className='text-danger'>Error: {error.message}</p>
+
+
+    }
+
     if (user) {
         navigate(from, { replace: true });
+    }
+
+    if (loading || sending) {
+        return <Spinner animation="border" />;
     }
 
     const handleLogin = event => {
@@ -42,6 +57,17 @@ const Login = () => {
     };
     const navigateRegister = event => {
         navigate('/register');
+    }
+
+    const resetpassword = async () => {
+        const email = emailRef.current.value;
+        if (email) {
+            await sendPasswordResetEmail(email);
+            toast('Sent email');
+        }
+        else {
+            toast('please enter your email');
+        }
     }
 
     return (
@@ -67,8 +93,11 @@ const Login = () => {
                     Login
                 </Button>
             </Form>
+            {errorElement}
             <p>new to this website?? <Link to='/register' className='text-primary pe-auto text-decoration-none' onClick={navigateRegister}>Please Register yourself first</Link></p>
+            <p>Forget Password?? <button className='btn btn-link text-primary pe-auto text-decoration-none' onClick={resetpassword}>You can reset password here</button></p>
             <GoogleLogin></GoogleLogin>
+            <ToastContainer />
         </div>
     );
 };

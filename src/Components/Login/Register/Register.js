@@ -1,8 +1,9 @@
 import React, { useRef } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form, Spinner } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
+import GoogleLogin from '../GoogleLogin/GoogleLogin';
 
 const Register = () => {
 
@@ -11,7 +12,7 @@ const Register = () => {
         user,
         loading,
         error,
-    ] = useCreateUserWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
     const emailRef = useRef('');
     const passwordRef = useRef('');
@@ -23,16 +24,20 @@ const Register = () => {
     };
 
     if (user) {
-        navigate('/home');
+        console.log(user);
     }
+    if (loading) {
+        return <Spinner animation="border" />;
+      }
 
-    const handleRegister = event => {
+    const handleRegister = async (event) => {
         event.preventDefault();
 
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
 
-        createUserWithEmailAndPassword(email, password);
+        await createUserWithEmailAndPassword(email, password);
+        navigate('/home');
 
         console.log(email, password);
     };
@@ -62,6 +67,7 @@ const Register = () => {
                 </Button>
             </Form>
             <p>already registerd?? <Link to='/login' className='text-primary pe-auto text-decoration-none' onClick={navigateLogin}>You can login here</Link></p>
+            <GoogleLogin />
         </div>
     );
 };
