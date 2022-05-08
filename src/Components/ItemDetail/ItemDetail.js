@@ -9,9 +9,15 @@ const ItemDetail = () => {
     const [currentItem, setcurrentItem] = useState({});
 
     useEffect(() => {
-        fetch(`http://localhost:5000/user/${itemId}`)
+        fetch('http://localhost:5000/user')
             .then(res => res.json())
-            .then(data => setcurrentItem(data))
+            .then(data => {
+                data.forEach(element => {
+                    if (element._id === itemId) {
+                        setcurrentItem(element);
+                    }
+                });
+            })
     }, [itemId])
 
     const navigate = useNavigate();
@@ -20,11 +26,44 @@ const ItemDetail = () => {
         navigate('/manageInventory');
     };
 
+    const sentUpdatedItemToBackend = (updatedItem) => {
+        fetch(`http://localhost:5000/user/${itemId}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updatedItem)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log('success', data)
+            })
+    }
+
+    const handleDelivery = () => {
+        const updatedQuantity = parseInt(currentItem.quantity) - 1;
+
+        const updatedItem = { ...currentItem, quantity: updatedQuantity.toString() };
+        setcurrentItem(updatedItem);
+        sentUpdatedItemToBackend(updatedItem);
+    }
+
+    const handleOnSubmit = (event) => {
+        event.preventDefault();
+        const desireItems = event.target.desireItems.value;
+
+        const updatedQuantity = parseInt(currentItem.quantity) + parseInt(desireItems);
+
+        const updatedItem = { ...currentItem, quantity: updatedQuantity.toString() };
+        setcurrentItem(updatedItem);
+        sentUpdatedItemToBackend(updatedItem);
+        event.target.reset();
+    }
 
     return (
         <div className='w-50 mx-auto d-flex justify-content-evenly mt-5 mb-5'>
             <Card style={{ width: '22rem' }}>
-                <Card.Img variant="top" src={currentItem.img} />
+                <Card.Img variant="top" src={currentItem.imageUrl} />
                 <Card.Body>
                     <Card.Title>name:{currentItem.name}</Card.Title>
                     <Card.Text>
@@ -40,26 +79,24 @@ const ItemDetail = () => {
                         Price:{currentItem.price}
 
                     </Card.Text>
-                    <Button variant="primary">Delivery</Button>
+                    <Button variant="primary" onClick={handleDelivery}>Delivery</Button>
                 </Card.Body>
             </Card>
 
             <div>
-                <Form>
-
+                <Form onSubmit={handleOnSubmit}>
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label>Items Quantity</Form.Label>
-                        <Form.Control type="items" placeholder="put your desire quantity" />
+                        <Form.Control type="items" name="desireItems" placeholder="put your desire quantity" />
                     </Form.Group>
                     <Button variant="primary" type="submit">
                         ReStock Items
                     </Button>
-
                 </Form>
-                <Link to='/manageInventory' className='text-primary pe-auto text-decoration-none' onClick={navigateInventory}><h2>Manage Inventory</h2></Link>
 
-
-
+                <Link to='/manageInventory' className='text-primary pe-auto text-decoration-none' onClick={navigateInventory}>
+                    <h2>Manage Inventory</h2>
+                </Link>
             </div>
 
         </div>

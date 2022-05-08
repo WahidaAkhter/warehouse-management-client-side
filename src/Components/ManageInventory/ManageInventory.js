@@ -7,16 +7,21 @@ const ManageInventory = () => {
     const [manageItem, setManageItem] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/users')
+        fetch('http://localhost:5000/user')
             .then(res => res.json())
             .then(data => setManageItem(data))
     }, [])
+
 
     const navigate = useNavigate();
 
     const navigateInventory = event => {
         navigate('/AddInventoryPage');
     };
+
+    const deleteManageItems = (id) => {
+        setManageItem((prev) => prev.filter((item) => item._id !== id));
+    }
 
     return (
         <div>
@@ -28,12 +33,17 @@ const ManageInventory = () => {
                         key={item.id}
                         item={item}
                         callFromInventory
+                        deleteOption={deleteManageItems}
 
                     ></Item>)
                 }
 
             </div>
-            <button className='d-flex mx-auto w-50 bg-dark'> <Link to='/AddInventoryPage' className='text-primary pe-auto text-decoration-none d-flex mx-auto w-50 ' onClick={navigateInventory}><h2>Add New Item</h2></Link></button>
+            <button className='d-flex mx-auto w-50 bg-dark'>
+                <Link to='/AddInventoryPage' className='text-primary pe-auto text-decoration-none d-flex mx-auto w-50 ' onClick={navigateInventory}>
+                    <h2>Add New Item</h2>
+                </Link>
+            </button>
         </div>
     );
 };

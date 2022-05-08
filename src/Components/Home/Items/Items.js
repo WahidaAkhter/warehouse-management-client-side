@@ -8,9 +8,12 @@ const Items = () => {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/users')
+        fetch('http://localhost:5000/user')
             .then(res => res.json())
-            .then(data => setItems(data))
+            .then(data => {
+                const itemSlice = data.slice(0, 6);
+                setItems(itemSlice);
+            })
     }, [])
 
     const navigate = useNavigate();
@@ -28,11 +31,15 @@ const Items = () => {
                     items.map(item => <Item
                         key={item.id}
                         item={item}
-
                     ></Item>)
                 }
             </div>
-            <Link to='/manageInventory' className='text-primary pe-auto text-decoration-none d-flex mx-auto w-50 ' onClick={navigateInventory}><h2>Manage Inventory</h2></Link>
+            <Link to='/manageInventory' 
+                className='text-primary pe-auto text-decoration-none d-flex mx-auto w-50 ' 
+                onClick={navigateInventory}
+            >
+                <h2>Manage Inventory</h2>
+            </Link>
         </div>
     );
 };
