@@ -8,7 +8,7 @@ const Items = () => {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/user')
+        fetch('https://vast-oasis-74168.herokuapp.com/user')
             .then(res => res.json())
             .then(data => {
                 const itemSlice = data.slice(0, 6);
@@ -34,8 +34,8 @@ const Items = () => {
                     ></Item>)
                 }
             </div>
-            <Link to='/manageInventory' 
-                className='text-primary pe-auto text-decoration-none d-flex mx-auto w-50 ' 
+            <Link to='/manageInventory'
+                className='text-primary pe-auto text-decoration-none d-flex mx-auto w-50 '
                 onClick={navigateInventory}
             >
                 <h2>Manage Inventory</h2>

@@ -11,7 +11,7 @@ const Item = ({ item, callFromInventory, deleteOption }) => {
         const proceed = window.confirm('are you sure you want to delete?')
         if (proceed) {
             console.log('user deleting', id);
-            const url = `http://localhost:5000/user/${id}`;
+            const url = `https://vast-oasis-74168.herokuapp.com/user/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })
@@ -38,8 +38,8 @@ const Item = ({ item, callFromInventory, deleteOption }) => {
             <Card >
                 {/* style={{ width: '18rem' }} */}
                 <Card.Img
-                style={{ width: '27rem' }}
-                variant="top" src={imageUrl} />
+                    style={{ width: '27rem' }}
+                    variant="top" src={imageUrl} />
                 <Card.Body>
                     <Card.Title>{name}</Card.Title>
                     <Card.Text>

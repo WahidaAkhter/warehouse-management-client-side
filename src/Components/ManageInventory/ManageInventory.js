@@ -7,7 +7,7 @@ const ManageInventory = () => {
     const [manageItem, setManageItem] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/user')
+        fetch('https://vast-oasis-74168.herokuapp.com/user')
             .then(res => res.json())
             .then(data => setManageItem(data))
     }, [])

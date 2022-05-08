@@ -9,7 +9,7 @@ const ItemDetail = () => {
     const [currentItem, setcurrentItem] = useState({});
 
     useEffect(() => {
-        fetch('http://localhost:5000/user')
+        fetch('https://vast-oasis-74168.herokuapp.com/user')
             .then(res => res.json())
             .then(data => {
                 data.forEach(element => {
@@ -27,7 +27,7 @@ const ItemDetail = () => {
     };
 
     const sentUpdatedItemToBackend = (updatedItem) => {
-        fetch(`http://localhost:5000/user/${itemId}`, {
+        fetch(`https://vast-oasis-74168.herokuapp.com/user/${itemId}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

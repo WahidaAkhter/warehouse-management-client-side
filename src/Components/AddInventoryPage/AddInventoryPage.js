@@ -16,7 +16,7 @@ const AddInventoryPage = () => {
         const item = { name, description, imageUrl, price, quantity, supplier };
 
 
-        fetch('http://localhost:5000/user', {
+        fetch('https://vast-oasis-74168.herokuapp.com/user', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

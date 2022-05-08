@@ -43,13 +43,13 @@ const Login = () => {
         return <Spinner animation="border" />;
     }
 
-    const handleLogin = event => {
+    const handleLogin = async (event) => {
         event.preventDefault();
 
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
 
-        signInWithEmailAndPassword(email, password);
+        await signInWithEmailAndPassword(email, password);
 
         console.log(email, password);
 

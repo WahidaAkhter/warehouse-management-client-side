@@ -5,6 +5,7 @@ https://github.com/ProgrammingHeroWC4/warehouse-management-server-side-WahidaAkh
 # stack overflow link :
 https://stackoverflow.com/questions/72160788/how-i-can-remove-only-one-object-in-mongodb-not-all-objects-matching-the-filter
 # live site link :
+https://books-inventory-42ccf.web.app/
 
 # about my project:
 1. I have used react bootstrap to design my website.
