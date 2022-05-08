@@ -4,9 +4,11 @@
     grid-gap: 20px;
     margin: 50px;
 }
-@media only screen and (max-width:576px){
-    .items-container{
+
+@media only screen and (max-width:576px) {
+    .items-container {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
+        margin: 0px;
     }
 }
