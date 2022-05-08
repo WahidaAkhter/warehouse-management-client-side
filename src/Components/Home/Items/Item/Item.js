@@ -36,7 +36,7 @@ const Item = ({ item, callFromInventory, deleteOption }) => {
     return (
         <div className='item'>
             <Card >
-                {/* style={{ width: '18rem' }} */}
+                 style={{ width: '18rem' }} 
                 <Card.Img variant="top" src={imageUrl} />
                 <Card.Body>
                     <Card.Title>{name}</Card.Title>

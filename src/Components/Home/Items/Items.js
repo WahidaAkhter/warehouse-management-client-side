@@ -24,7 +24,7 @@ const Items = () => {
 
     return (
         <div className='mb-5'>
-            <h2 className='text-center mt-5 mb-5' id='items'>Inventory Items:{items.length}</h2>
+            <h2 className='text-center mt-5 mb-5' id='items'>Inventory Items</h2>
 
             <div className='items-container'>
                 {
