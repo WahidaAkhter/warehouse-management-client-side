@@ -25,7 +25,7 @@ const ManageInventory = () => {
 
     return (
         <div>
-            <h2 className='text-center mt-5 mb-5' id='items'>Manage Inventory Items:{manageItem.length}</h2>
+            <h2 className='text-center mt-5 mb-5 text-primary' id='items'>Manage Inventory Items</h2>
             <div className='items-container'>
                 {
                     manageItem.map(item => <Item
